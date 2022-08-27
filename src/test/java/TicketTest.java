@@ -27,7 +27,7 @@ public class TicketTest {
         manage.add(ticket1);
 
         Ticket[] expected = {ticket5, ticket1, ticket4, ticket2};
-        Ticket[] actual = manage.findAll("AAA", "BBB");;
+        Ticket[] actual = manage.findAll("AAA", "BBB");
 
         Assertions.assertArrayEquals(expected, actual);
     }
