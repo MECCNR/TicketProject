@@ -29,4 +29,9 @@ public class TicketRepo {
         System.out.println(Arrays.toString(tickets));
         return tickets;
     }
+
+    public Ticket[] getTicketsQuietly() {
+        Arrays.sort(tickets);
+        return tickets;
+    }
 }

@@ -13,7 +13,7 @@ public class TicketManager {
 
     public Ticket[] findAll(String from, String to) {
         Ticket[] result = new Ticket[0];
-        for (Ticket replace : repo.getTickets()) {
+        for (Ticket replace : repo.getTicketsQuietly()) {
             if (matchesDepart(replace, from)) {
                 Ticket[] tmp = new Ticket[result.length + 1];
                 for (int i = 0; i < result.length; i++) {

@@ -20,11 +20,11 @@ public class TicketTest {
 
     @Test
     public void searchTest() {
-        manage.add(ticket5);
-        manage.add(ticket4);
-        manage.add(ticket3);
-        manage.add(ticket2);
         manage.add(ticket1);
+        manage.add(ticket2);
+        manage.add(ticket3);
+        manage.add(ticket4);
+        manage.add(ticket5);
 
         Ticket[] expected = {ticket5, ticket1, ticket4, ticket2};
         Ticket[] actual = manage.findAll("AAA", "BBB");
