@@ -1,8 +1,7 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class TicketTest {
-
+public class AdditionalTests {
     TicketRepo mock = new TicketRepo();
     TicketManager manage = new TicketManager(mock);
 
@@ -17,7 +16,7 @@ public class TicketTest {
     Ticket ticket5 = new Ticket(5, 50, "PPP", "BBB", 1500);
 
     @Test
-    public void searchTest() {
+    public void fewTicketsTest() {
         manage.add(ticket1);
         manage.add(ticket2);
         manage.add(ticket3);
@@ -31,31 +30,29 @@ public class TicketTest {
     }
 
     @Test
-    public void addTest() {
-        manage.add(ticket5);
-        manage.add(ticket4);
-        manage.add(ticket3);
-        manage.add(ticket2);
+    public void onlyOneResultTest() {
         manage.add(ticket1);
+        manage.add(ticket2);
+        manage.add(ticket3);
+        manage.add(ticket4);
+        manage.add(ticket5);
 
-        Ticket[] expected = {ticket5, ticket1, ticket3, ticket4, ticket2};
-        Ticket[] actual = mock.getTickets();
+        Ticket[] expected = {ticket3};
+        Ticket[] actual = manage.findAll("SSS", "SSR");
 
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void deleteTest() {
-        manage.add(ticket5);
-        manage.add(ticket4);
-        manage.add(ticket3);
-        manage.add(ticket2);
+    public void noTicketsTest() {
         manage.add(ticket1);
+        manage.add(ticket2);
+        manage.add(ticket3);
+        manage.add(ticket4);
+        manage.add(ticket5);
 
-        mock.removeById(1);
-
-        Ticket[] expected = {ticket5, ticket3, ticket4, ticket2};
-        Ticket[] actual = mock.getTickets();
+        Ticket[] expected = {};
+        Ticket[] actual = manage.findAll("XXX", "XXX");
 
         Assertions.assertArrayEquals(expected, actual);
     }
